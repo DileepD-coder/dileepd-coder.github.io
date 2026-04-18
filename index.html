@@ -1,106 +1,240 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dileep Durgam | Data Analyst</title>
 
-export default function Portfolio() {
-  const [page, setPage] = useState("home");
+<style>
+:root{
+  --cyan:#00f5ff;
+  --purple:#c026d3;
+  --bg1:#0a0a2e;
+  --bg2:#1a0033;
+}
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [page]);
+*{margin:0;padding:0;box-sizing:border-box;}
 
-  return (
-    <div className="min-h-screen bg-[#050816] text-white overflow-hidden">
-      {/* NAV */}
-      <div className="fixed top-6 left-1/2 -translate-x-1/2 flex gap-4 z-50">
-        <button
-          onClick={() => setPage("home")}
-          className="px-5 py-2 rounded-full bg-white/10 backdrop-blur-md hover:bg-cyan-500/30 transition"
-        >
-          Home
-        </button>
-        <button
-          onClick={() => setPage("projects")}
-          className="px-5 py-2 rounded-full bg-white/10 backdrop-blur-md hover:bg-cyan-500/30 transition"
-        >
-          Projects
-        </button>
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:Segoe UI, Arial, sans-serif;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg1));
+  color:#e0f2fe;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0,245,255,0.18), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(192,38,211,0.18), transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(0,255,180,0.08), transparent 60%);
+  animation: floatBG 10s ease-in-out infinite alternate;
+  z-index:-2;
+}
+
+@keyframes floatBG{
+  0%{transform:scale(1) translateY(0px);}
+  100%{transform:scale(1.1) translateY(-20px);}
+}
+
+/* NAV */
+.nav{
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:15px;
+  z-index:10;
+}
+
+.nav button, .nav a{
+  padding:10px 20px;
+  border-radius:30px;
+  border:1px solid rgba(0,245,255,0.4);
+  background:rgba(255,255,255,0.05);
+  color:white;
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+  text-decoration:none;
+  font-size:14px;
+}
+
+.nav button:hover, .nav a:hover{
+  box-shadow:0 0 15px rgba(0,245,255,0.4);
+}
+
+/* PAGE TRANSITION SYSTEM */
+section{
+  min-height:100vh;
+  padding:120px 8% 80px;
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 0.6s ease;
+  position:absolute;
+  width:100%;
+  top:0;
+  left:0;
+  pointer-events:none;
+}
+
+section.active{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+  position:relative;
+}
+
+.hero{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  min-height:100vh;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:520px;
+  height:520px;
+  border-radius:50%;
+  background:radial-gradient(circle at center, rgba(255,255,255,0.18), rgba(0,245,255,0.12), transparent 70%);
+  filter:blur(30px);
+  z-index:-1;
+}
+
+.profile{
+  width:340px;
+  border:none;
+  box-shadow:none;
+  border-radius:25px;
+}
+
+h1{
+  font-size:4rem;
+  margin-top:25px;
+  background:linear-gradient(90deg,var(--cyan),var(--purple));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.subtitle{color:#67e8f9;margin-top:10px;}
+.tagline{max-width:700px;margin-top:20px;opacity:0.9;}
+
+/* BUTTONS */
+.btn{
+  display:inline-block;
+  padding:12px 28px;
+  margin:10px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.btn-primary{background:linear-gradient(45deg,var(--cyan),var(--purple));color:#0a0a2e;}
+.btn-secondary{border:2px solid var(--cyan);color:white;background:transparent;}
+
+/* PROJECTS */
+.projects-container{
+  display:flex;
+  gap:60px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.projects-left img{
+  width:450px;
+  border-radius:0;
+  box-shadow:none;
+}
+
+.projects-right{
+  flex:1;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:15px;
+  border:1px solid rgba(0,245,255,0.2);
+  margin-bottom:15px;
+}
+
+/* BACK BUTTON */
+.back-btn{
+  position:absolute;
+  top:30px;
+  left:30px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV (NO HOME BUTTON) -->
+<div class="nav">
+  <button onclick="showPage('projects')">Projects</button>
+  <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+</div>
+
+<!-- HOME -->
+<section id="home" class="active">
+  <div class="hero">
+    <img src="Profile1.png" class="profile" alt="Profile">
+    
+    <h1>DILEEP DURGAM</h1>
+    <div class="subtitle">Data Analyst | SQL | Python | Tableau | Power BI</div>
+    <div class="tagline">Transforming datasets into actionable insights through analytics and automation.</div>
+  </div>
+</section>
+
+<!-- PROJECTS PAGE -->
+<section id="projects">
+
+  <button class="btn btn-secondary back-btn" onclick="showPage('home')">← Back</button>
+
+  <h2 style="text-align:center;margin-bottom:50px;color:#67e8f9;">My Projects</h2>
+
+  <div class="projects-container">
+
+    <div class="projects-left">
+      <img src="profile2.png" alt="Profile 2">
+    </div>
+
+    <div class="projects-right">
+      <div class="card">
+        <h3>BI Dashboard – E-commerce</h3>
+        <p>Built Tableau dashboard using 100K+ records.</p>
       </div>
 
-      {/* HOME */}
-      {page === "home" && (
-        <motion.section
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="h-screen flex flex-col items-center justify-center text-center px-6"
-        >
-          <div className="absolute w-[500px] h-[500px] bg-cyan-500/20 blur-3xl rounded-full animate-pulse" />
+      <div class="card">
+        <h3>SQL Automation System</h3>
+        <p>Automated ETL workflows using SQL Server & VB.NET.</p>
+      </div>
 
-          <img
-            src="Profile1.png"
-            className="w-60 rounded-2xl mb-6 shadow-lg"
-          />
-
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-cyan-400 to-fuchsia-500 text-transparent bg-clip-text">
-            DILEEP DURGAM
-          </h1>
-
-          <p className="mt-3 text-gray-300">
-            Data Analyst | SQL | Python | BI Developer
-          </p>
-
-          <div className="mt-6 flex gap-4">
-            <a
-              href="https://linkedin.com"
-              className="px-6 py-2 rounded-full bg-cyan-500 text-black font-semibold"
-            >
-              LinkedIn
-            </a>
-            <a
-              onClick={() => setPage("projects")}
-              className="px-6 py-2 rounded-full border border-cyan-400 cursor-pointer"
-            >
-              View Projects
-            </a>
-          </div>
-        </motion.section>
-      )}
-
-      {/* PROJECTS */}
-      {page === "projects" && (
-        <motion.section
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="min-h-screen px-10 py-20"
-        >
-          <button
-            onClick={() => setPage("home")}
-            className="mb-10 px-5 py-2 rounded-full border border-cyan-400 hover:bg-cyan-500/20"
-          >
-            ← Back
-          </button>
-
-          <div className="flex flex-col md:flex-row items-center gap-10">
-            <img
-              src="profile2.png"
-              className="w-[420px]"
-            />
-
-            <div className="space-y-4">
-              <div className="p-5 rounded-xl bg-white/5 border border-cyan-500/20">
-                BI Dashboard – E-commerce (Tableau)
-              </div>
-              <div className="p-5 rounded-xl bg-white/5 border border-cyan-500/20">
-                SQL Automation System (VB.NET)
-              </div>
-              <div className="p-5 rounded-xl bg-white/5 border border-cyan-500/20">
-                Python Data Processing (Pandas)
-              </div>
-            </div>
-          </div>
-        </motion.section>
-      )}
+      <div class="card">
+        <h3>Python Data Processing</h3>
+        <p>Built automation scripts for data cleaning & reporting.</p>
+      </div>
     </div>
-  );
+
+  </div>
+</section>
+
+<script>
+function showPage(page){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(page).classList.add('active');
 }
+</script>
+
+</body>
+</html>
