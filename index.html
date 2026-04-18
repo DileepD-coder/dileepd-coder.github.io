@@ -15,6 +15,8 @@
 
 *{margin:0;padding:0;box-sizing:border-box;}
 
+html{scroll-behavior:smooth;}
+
 body{
   font-family:Segoe UI, Arial, sans-serif;
   background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg1));
@@ -39,18 +41,64 @@ body::before{
   100%{transform:scale(1.1) translateY(-20px);}
 }
 
-.hero{
+/* NAV */
+.nav{
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:15px;
+  z-index:10;
+}
+
+.nav button, .nav a{
+  padding:10px 20px;
+  border-radius:30px;
+  border:1px solid rgba(0,245,255,0.4);
+  background:rgba(255,255,255,0.05);
+  color:white;
+  cursor:pointer;
+  backdrop-filter:blur(10px);
+  text-decoration:none;
+  font-size:14px;
+}
+
+.nav button:hover, .nav a:hover{
+  box-shadow:0 0 15px rgba(0,245,255,0.4);
+}
+
+/* PAGE TRANSITION SYSTEM */
+section{
   min-height:100vh;
+  padding:120px 8% 80px;
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 0.6s ease;
+  position:absolute;
+  width:100%;
+  top:0;
+  left:0;
+  pointer-events:none;
+}
+
+section.active{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+  position:relative;
+}
+
+.hero{
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:40px 20px;
   position:relative;
+  min-height:100vh;
 }
 
-/* CINEMATIC SPOTLIGHT */
 .hero::after{
   content:"";
   position:absolute;
@@ -60,188 +108,133 @@ body::before{
   background:radial-gradient(circle at center, rgba(255,255,255,0.18), rgba(0,245,255,0.12), transparent 70%);
   filter:blur(30px);
   z-index:-1;
-  animation:spotlight 5s ease-in-out infinite alternate;
 }
 
-@keyframes spotlight{
-  0%{transform:scale(1);opacity:0.6;}
-  100%{transform:scale(1.15) translateY(-10px);opacity:1;}
-}
-
-/* PROFILE CLEAN (NO BOX, NO SHADOW) */
 .profile{
   width:340px;
-  border-radius:25px;
   border:none;
   box-shadow:none;
-  position:relative;
-  display:block;
-}
-
-/* APPLE STYLE GLASS REFLECTION */
-.profile::before{
-  content:"";
-  position:absolute;
-  top:-40%;
-  left:-60%;
-  width:220%;
-  height:220%;
-  background:linear-gradient(120deg, transparent 40%, rgba(255,255,255,0.25), transparent 60%);
-  transform:rotate(25deg);
-  animation:shine 6s infinite;
-  pointer-events:none;
-}
-
-@keyframes shine{
-  0%{transform:translateX(-100%) rotate(25deg);}
-  100%{transform:translateX(100%) rotate(25deg);}
+  border-radius:25px;
 }
 
 h1{
   font-size:4rem;
-  letter-spacing:5px;
   margin-top:25px;
   background:linear-gradient(90deg,var(--cyan),var(--purple));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  animation:textGlow 3s infinite alternate;
 }
 
-@keyframes textGlow{
-  from{filter:drop-shadow(0 0 5px rgba(0,245,255,0.5));}
-  to{filter:drop-shadow(0 0 20px rgba(192,38,211,0.8));}
-}
+.subtitle{color:#67e8f9;margin-top:10px;}
+.tagline{max-width:700px;margin-top:20px;opacity:0.9;}
 
-.subtitle{
-  font-size:1.4rem;
-  color:#67e8f9;
-  margin-top:8px;
-}
-
-.tagline{
-  max-width:650px;
-  margin-top:20px;
-  font-size:1.1rem;
-  opacity:0.85;
-}
-
-.buttons{margin-top:35px;}
-
+/* BUTTONS */
 .btn{
   display:inline-block;
-  padding:14px 34px;
+  padding:12px 28px;
   margin:10px;
   border-radius:50px;
   text-decoration:none;
   font-weight:600;
-  transition:0.3s;
-  position:relative;
-  overflow:hidden;
+  cursor:pointer;
 }
 
-.btn-primary{
-  background:linear-gradient(45deg,var(--cyan),var(--purple));
-  color:#0a0a2e;
+.btn-primary{background:linear-gradient(45deg,var(--cyan),var(--purple));color:#0a0a2e;}
+.btn-secondary{border:2px solid var(--cyan);color:white;background:transparent;}
+
+/* PROJECTS */
+.projects-container{
+  display:flex;
+  gap:60px;
+  align-items:center;
+  flex-wrap:wrap;
 }
 
-.btn-secondary{
-  border:2px solid var(--cyan);
-  color:white;
-  background:transparent;
+.projects-left img{
+  width:450px;
+  border-radius:20px;
+  box-shadow:0 0 40px rgba(0,245,255,0.25);
 }
 
-/* subtle shine only */
-.btn::before{
-  content:"";
-  position:absolute;
-  top:0;left:-100%;
-  width:100%;height:100%;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.25),transparent);
-  transition:0.6s;
+.projects-right{
+  flex:1;
 }
 
-.btn:hover::before{left:100%;}
-
-section{
-  padding:100px 8%;
-  max-width:1200px;
-  margin:auto;
-}
-
-h2{
-  text-align:center;
-  font-size:2.5rem;
-  margin-bottom:50px;
-  color:#67e8f9;
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-}
-
-.stat{
-  text-align:center;
-  padding:25px;
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:20px;
   border-radius:15px;
-  background:rgba(0,245,255,0.05);
   border:1px solid rgba(0,245,255,0.2);
+  margin-bottom:15px;
 }
 
-.stat h3{font-size:2rem;color:var(--cyan);}
-
-footer{
-  text-align:center;
-  padding:60px 20px;
-  opacity:0.7;
+/* BACK BUTTON */
+.back-btn{
+  position:absolute;
+  top:30px;
+  left:30px;
 }
 
 </style>
 </head>
 <body>
 
-<div class="hero">
-  <img src="Profile1.png" class="profile" alt="Dileep">
-  
-  <h1>DILEEP DURGAM</h1>
-  <div class="subtitle">Data Analyst | SQL | Python | Tableau | Power BI</div>
-  <div class="tagline">
-    Transforming large operational datasets into actionable insights through ETL, dashboards, and KPI-driven analytics.
-  </div>
-
-  <div class="buttons">
-    <a href="#projects" class="btn btn-primary">Explore Projects</a>
-    <a href="https://linkedin.com" class="btn btn-secondary">LinkedIn</a>
-    <a href="https://github.com" class="btn btn-secondary">GitHub</a>
-  </div>
+<!-- NAV (NO HOME BUTTON) -->
+<div class="nav">
+  <button onclick="showPage('projects')">Projects</button>
+  <a href="https://linkedin.com" target="_blank">LinkedIn</a>
 </div>
 
-<section>
-  <h2>Impact Highlights</h2>
-  <div class="stats">
-    <div class="stat">
-      <h3>+30%</h3>
-      <p>Reporting Efficiency</p>
-    </div>
-    <div class="stat">
-      <h3>50+</h3>
-      <p>Dashboards Built</p>
-    </div>
-    <div class="stat">
-      <h3>100K+</h3>
-      <p>Records Processed</p>
-    </div>
-    <div class="stat">
-      <h3>3+ Yrs</h3>
-      <p>Experience</p>
-    </div>
+<!-- HOME -->
+<section id="home" class="active">
+  <div class="hero">
+    <img src="Profile1.png" class="profile" alt="Profile">
+    
+    <h1>DILEEP DURGAM</h1>
+    <div class="subtitle">Data Analyst | SQL | Python | Tableau | Power BI</div>
+    <div class="tagline">Transforming datasets into actionable insights through analytics and automation.</div>
   </div>
 </section>
 
-<footer>
-  © 2026 Dileep Durgam • Data Analyst • Dekalb, IL • +1 224-390-6774
-</footer>
+<!-- PROJECTS PAGE -->
+<section id="projects">
+
+  <button class="btn btn-secondary back-btn" onclick="showPage('home')">← Back</button>
+
+  <h2 style="text-align:center;margin-bottom:50px;color:#67e8f9;">My Projects</h2>
+
+  <div class="projects-container">
+
+    <div class="projects-left">
+      <img src="profile2.png" alt="Profile 2">
+    </div>
+
+    <div class="projects-right">
+      <div class="card">
+        <h3>BI Dashboard – E-commerce</h3>
+        <p>Built Tableau dashboard using 100K+ records.</p>
+      </div>
+
+      <div class="card">
+        <h3>SQL Automation System</h3>
+        <p>Automated ETL workflows using SQL Server & VB.NET.</p>
+      </div>
+
+      <div class="card">
+        <h3>Python Data Processing</h3>
+        <p>Built automation scripts for data cleaning & reporting.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+function showPage(page){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(page).classList.add('active');
+}
+</script>
 
 </body>
 </html>
