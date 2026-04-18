@@ -1,102 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Dileep Durgam | Data Analyst</title>
+<meta charset="UTF-8">
+<title>Dileep Durgam | Data Analyst</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f4f6f9;
-      color: #333;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e3a8a, #0f172a);
+  color: white;
+}
 
-    header {
-      background: #1f4e79;
-      color: white;
-      padding: 40px;
-      text-align: center;
-    }
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 32px;
-    }
+.profile {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #00e5ff;
+  box-shadow: 0 0 20px #00e5ff;
+  object-fit: cover;
+  animation: glow 2s infinite alternate;
+}
 
-    header p {
-      margin-top: 10px;
-      font-size: 18px;
-    }
+@keyframes glow {
+  from { box-shadow: 0 0 10px #00e5ff; }
+  to { box-shadow: 0 0 25px #ff00ff; }
+}
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
+h1 {
+  margin-top: 15px;
+  font-size: 34px;
+}
 
-    .card {
-      background: white;
-      padding: 20px;
-      margin: 15px 0;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+p {
+  font-size: 16px;
+  opacity: 0.9;
+}
 
-    h2 {
-      color: #1f4e79;
-    }
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
 
-    .project-title {
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
+.linkedin {
+  background: #0077b5;
+  color: white;
+}
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #1f4e79;
-      color: white;
-      margin-top: 30px;
-    }
+.github {
+  background: #333;
+  color: white;
+}
 
-    a {
-      color: #1f4e79;
-      text-decoration: none;
-    }
-  </style>
+.btn:hover {
+  transform: scale(1.1);
+}
 
+/* SECTIONS */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+/* PROJECTS */
+.project {
+  border-left: 4px solid #00e5ff;
+  padding-left: 15px;
+  margin: 15px 0;
+}
+
+.metric {
+  color: #00ffae;
+  font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  h1 { font-size: 26px; }
+  .profile { width: 120px; height: 120px; }
+}
+</style>
 </head>
 
 <body>
 
-<header>
+<div class="hero">
+
+  <!-- PROFILE IMAGE -->
+  <img src="your-photo.jpg" class="profile" alt="Profile">
+
   <h1>Dileep Durgam</h1>
   <p>Data Analyst | SQL | Python | Tableau</p>
-</header>
+
+  <!-- BUTTONS -->
+  <a class="btn linkedin" href="https://linkedin.com" target="_blank">LinkedIn</a>
+  <a class="btn github" href="https://github.com" target="_blank">GitHub</a>
+
+</div>
 
 <div class="container">
 
   <div class="card">
     <h2>About Me</h2>
     <p>
-      Data Analyst with a Master’s in Information Technology.
-      Skilled in SQL, Python, and Tableau to analyze data, build dashboards,
-      and generate business insights for decision-making.
+      Data Analyst with Master's in Information Technology.
+      Skilled in SQL, Python, Tableau, and data visualization.
+      Focused on turning raw data into business insights.
     </p>
   </div>
 
   <div class="card">
-    <h2>Projects</h2>
+    <h2>Projects & Impact</h2>
 
-    <p class="project-title">E-commerce Analytics Dashboard</p>
-    <p>Built Tableau dashboards analyzing 100K+ records to track product performance and customer behavior.</p>
+    <div class="project">
+      <h3>E-commerce Dashboard</h3>
+      <p>Built Tableau dashboards on 100K+ records</p>
+      <p class="metric">📈 +20% marketing efficiency improvement</p>
+    </div>
 
-    <p class="project-title">SQL Reporting Automation</p>
-    <p>Developed automated reporting system using SQL Server and ETL workflows to improve reporting efficiency.</p>
+    <div class="project">
+      <h3>SQL Automation System</h3>
+      <p>Automated reporting using SQL Server & ETL</p>
+      <p class="metric">⚡ 60% faster reporting time</p>
+    </div>
 
-    <p class="project-title">Python Data Analysis</p>
-    <p>Used Python (Pandas) to clean, analyze, and visualize large datasets for insights.</p>
+    <div class="project">
+      <h3>Python Data Analysis</h3>
+      <p>Cleaned and analyzed large datasets using Pandas</p>
+      <p class="metric">📊 95% data accuracy improvement</p>
+    </div>
+
   </div>
 
   <div class="card">
