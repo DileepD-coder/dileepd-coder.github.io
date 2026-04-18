@@ -6,47 +6,33 @@
     <title>Dileep Durgam | Data Analyst</title>
     <style>
         :root {
-            --primary: #00e5ff;
-            --accent: #ff00ff;
-            --bg: #0f172a;
+            --neon-cyan: #00f5ff;
+            --neon-purple: #c026d3;
+            --neon-pink: #ff00ff;
         }
-        
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #0f172a, #1e3a8a, #0f172a);
-            color: #e2e8f0;
-            line-height: 1.6;
+            background: linear-gradient(135deg, #0a0a2e, #1a0033, #0a0a2e);
+            color: #e0f2fe;
+            min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
         }
-        
-        /* Navbar */
-        nav {
-            position: sticky;
-            top: 0;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+
+        /* Cosmic background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(192, 38, 211, 0.25), transparent 50%),
+                        radial-gradient(circle at 70% 60%, rgba(0, 245, 255, 0.2), transparent 50%);
+            pointer-events: none;
+            z-index: -1;
         }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin-left: 2rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
+
         /* Hero */
         .hero {
             min-height: 100vh;
@@ -56,320 +42,364 @@
             align-items: center;
             text-align: center;
             padding: 0 20px;
-            background: radial-gradient(circle at center, rgba(0, 229, 255, 0.15), transparent 70%);
+            position: relative;
         }
-        
+
         .profile {
-            width: 180px;
-            height: 180px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
-            border: 5px solid var(--primary);
-            box-shadow: 0 0 40px rgba(0, 229, 255, 0.6);
             object-fit: cover;
-            margin-bottom: 20px;
+            border: 6px solid var(--neon-cyan);
+            box-shadow: 
+                0 0 40px var(--neon-cyan),
+                0 0 80px var(--neon-purple),
+                inset 0 0 30px rgba(255,255,255,0.3);
+            margin-bottom: 30px;
             transition: transform 0.4s;
         }
-        
+
         .profile:hover {
             transform: scale(1.08);
         }
-        
+
         h1 {
-            font-size: 3.2rem;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #00e5ff, #ff00ff);
+            font-size: 4.2rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            background: linear-gradient(90deg, #00f5ff, #ff00ff, #00f5ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px var(--neon-cyan);
+            margin-bottom: 10px;
         }
-        
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #67e8f9;
+            margin-bottom: 8px;
+        }
+
         .tagline {
-            font-size: 1.4rem;
+            font-size: 1.25rem;
+            max-width: 620px;
             opacity: 0.9;
-            margin-bottom: 30px;
+            margin-bottom: 50px;
         }
-        
+
+        /* Neon Buttons */
         .btn {
             display: inline-block;
-            padding: 14px 32px;
-            margin: 10px;
+            padding: 16px 36px;
+            margin: 12px;
             border-radius: 50px;
-            text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
-            border: 2px solid transparent;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
         }
-        
+
         .btn-primary {
-            background: var(--primary);
-            color: #0f172a;
+            background: linear-gradient(45deg, #00f5ff, #c026d3);
+            color: #0a0a2e;
+            box-shadow: 0 0 25px #00f5ff;
         }
-        
+
         .btn-secondary {
             background: transparent;
             color: white;
-            border: 2px solid var(--primary);
+            border: 2px solid #00f5ff;
+            box-shadow: 0 0 20px #00f5ff;
         }
-        
+
         .btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0, 229, 255, 0.4);
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 0 40px #ff00ff,
+                        0 0 60px #00f5ff;
         }
-        
+
         /* Sections */
         section {
-            padding: 80px 5%;
-            max-width: 1100px;
+            padding: 100px 8%;
+            max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             text-align: center;
-            margin-bottom: 50px;
-            position: relative;
+            margin-bottom: 60px;
+            color: #67e8f9;
+            text-shadow: 0 0 15px var(--neon-cyan);
         }
-        
-        h2::after {
-            content: '';
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-        
-        .card {
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(12px);
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 245, 255, 0.3);
             border-radius: 20px;
-            padding: 30px;
-            margin: 20px 0;
-            border: 1px solid rgba(0, 229, 255, 0.15);
-            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 35px;
+            box-shadow: 0 0 30px rgba(192, 38, 211, 0.25);
+            transition: all 0.4s;
         }
-        
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 50px rgba(0, 245, 255, 0.4);
         }
-        
-        /* Skills */
+
+        /* Skills Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
-        
-        .skill {
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s;
+
+        .skill-category {
+            background: rgba(10, 10, 46, 0.7);
+            border: 1px solid rgba(192, 38, 211, 0.4);
+            border-radius: 18px;
+            padding: 25px;
         }
-        
-        .skill:hover {
-            background: rgba(0, 229, 255, 0.15);
-            transform: scale(1.05);
+
+        .skill-category h3 {
+            color: #67e8f9;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
         }
-        
-        /* Projects */
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: rgba(0, 245, 255, 0.15);
+            color: #67e8f9;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        /* Experience & Projects */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 25px;
         }
-        
-        .project-card {
-            background: rgba(255,255,255,0.08);
+
+        .card {
+            background: rgba(10, 10, 46, 0.7);
+            border: 1px solid rgba(192, 38, 211, 0.4);
             border-radius: 18px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 229, 255, 0.2);
+            padding: 28px;
+            transition: all 0.4s;
         }
-        
-        .project-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+
+        .card:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 35px rgba(0, 245, 255, 0.35);
         }
-        
-        .project-content {
-            padding: 20px;
+
+        .card h3 {
+            color: #67e8f9;
+            margin-bottom: 8px;
         }
-        
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 15px 0;
+
+        .date {
+            color: #a5f3fc;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
         }
-        
-        .tag {
-            background: rgba(0, 229, 255, 0.2);
-            color: var(--primary);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-        
+
         .metric {
-            color: #00ffae;
-            font-weight: 700;
-            margin-top: 10px;
+            color: #67e8f9;
+            font-weight: bold;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        
-        /* Contact */
-        form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        input, textarea {
-            width: 100%;
-            padding: 14px;
-            margin: 12px 0;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(0, 229, 255, 0.3);
-            border-radius: 10px;
-            color: white;
-        }
-        
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 40px 20px;
-            opacity: 0.8;
-            font-size: 0.95rem;
+            padding: 60px 20px;
+            opacity: 0.75;
+            font-size: 1rem;
+            border-top: 1px solid rgba(0, 245, 255, 0.2);
         }
-        
+
         @media (max-width: 768px) {
-            h1 { font-size: 2.4rem; }
-            .nav-links a { margin-left: 1rem; font-size: 0.95rem; }
+            h1 { font-size: 2.8rem; }
+            .profile { width: 170px; height: 170px; }
+            section { padding: 80px 5%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav>
-        <div><strong>Dileep Durgam</strong></div>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
+    <!-- HERO -->
+    <div class="hero">
+        <img src="https://via.placeholder.com/220" alt="Dileep Durgam - Data Analyst" class="profile"> <!-- ← Replace with your real photo URL -->
+        
+        <h1>DILEEP DURGAM</h1>
+        <p class="subtitle">Data Analyst | SQL | Python | Tableau | Power BI</p>
+        <p class="tagline">Transforming large operational datasets into actionable business insights through data validation, ETL, and KPI-driven reporting.</p>
+
+        <div>
+            <a href="#projects" class="btn btn-primary">My Projects</a>
+            <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="btn btn-secondary">LinkedIn</a>
+            <a href="https://github.com/yourusername" target="_blank" class="btn btn-secondary">GitHub</a>
         </div>
-    </nav>
+    </div>
 
-    <!-- Hero -->
-    <section class="hero" id="home">
-        <img src="https://via.placeholder.com/180" alt="Dileep Durgam - Data Analyst Profile" class="profile">
-        <h1>Dileep Durgam</h1>
-        <p class="tagline">Data Analyst | Turning Data into Actionable Insights</p>
-        <p style="max-width: 600px; opacity: 0.85; margin-bottom: 30px;">
-            Master's in Information Technology • SQL • Python • Tableau • Power BI
-        </p>
-        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="btn btn-primary">LinkedIn</a>
-        <a href="https://github.com/yourusername" target="_blank" class="btn btn-secondary">GitHub</a>
-    </section>
-
-    <!-- About -->
+    <!-- ABOUT ME -->
     <section id="about">
         <h2>About Me</h2>
-        <div class="card">
-            <p>
-                Passionate Data Analyst with a Master's in Information Technology. 
-                I specialize in extracting meaningful insights from complex datasets using SQL, Python, 
-                and visualization tools like Tableau and Power BI. 
-                My focus is on delivering business value through clean, accurate, and impactful data stories.
-            </p>
-            <p style="margin-top: 15px;">
-                Experienced in automating reports, building interactive dashboards, and driving data-driven decisions.
-            </p>
+        <div class="glass-card" style="max-width: 900px; margin: 0 auto; text-align: center; font-size: 1.15rem; line-height: 1.8;">
+            Data Analytics and Business Intelligence professional with a master’s degree in information technology and 
+            experience in SQL-based analytics, data modeling, and dashboard development. Skilled in transforming large 
+            operational datasets into actionable insights through data validation, ETL processes, and KPI-driven reporting. 
+            Experienced with Tableau, Python, and relational databases to support business decision-making and workflow 
+            optimization. Strong analytical mindset with a focus on accuracy, automation, and cross-functional collaboration.
         </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" style="background: rgba(15,23,42,0.6);">
+    <!-- TECHNICAL SKILLS -->
+    <section id="skills" style="background: rgba(10,10,46,0.6);">
         <h2>Technical Skills</h2>
         <div class="skills-grid">
-            <div class="skill">SQL &amp; Databases</div>
-            <div class="skill">Python (Pandas, NumPy, Matplotlib)</div>
-            <div class="skill">Tableau / Power BI</div>
-            <div class="skill">ETL &amp; Automation</div>
-            <div class="skill">Data Cleaning &amp; Visualization</div>
-            <div class="skill">Excel / Google Sheets Advanced</div>
+
+            <div class="skill-category">
+                <h3>Programming &amp; Scripting</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Python (Pandas, NumPy, Matplotlib)</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">VB .NET</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Databases</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">MS SQL Server</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">Oracle</span>
+                    <span class="skill-tag">Relational Database Design</span>
+                    <span class="skill-tag">Star Schema</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Data Analytics &amp; Visualization</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">KPI Reporting</span>
+                    <span class="skill-tag">Dashboard Development</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Cloud &amp; Automation</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">AWS (S3, Glue)</span>
+                    <span class="skill-tag">Databricks</span>
+                    <span class="skill-tag">MS Power Automate</span>
+                    <span class="skill-tag">MS Power Apps</span>
+                    <span class="skill-tag">Google Sheets API</span>
+                    <span class="skill-tag">ETL Processes</span>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- Projects -->
+    <!-- PROFESSIONAL EXPERIENCE -->
+    <section id="experience">
+        <h2>Professional Experience</h2>
+        <div class="card glass-card">
+            <h3>Production Analyst</h3>
+            <p style="color:#67e8f9; margin-bottom: 15px;">Factor • Illinois, USA • Mar 2026 – Present</p>
+            <ul style="padding-left: 20px; line-height: 1.7;">
+                <li>Monitor production workflows and analyze operational data to identify inefficiencies and support process improvements.</li>
+                <li>Develop reports and dashboards to track production KPIs and provide insights for operational decision-making.</li>
+                <li>Perform data validation and ensure accuracy of operational datasets used in reporting.</li>
+                <li>Collaborate with cross-functional teams to streamline reporting processes and improve workflow efficiency.</li>
+                <li>Support data-driven initiatives by analyzing trends and recommending improvements to production processes.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
     <section id="projects">
-        <h2>Featured Projects</h2>
+        <h2>Projects &amp; Impact</h2>
         <div class="projects-grid">
-            
-            <div class="project-card">
-                <img src="https://via.placeholder.com/600x200/1e3a8a/ffffff?text=E-commerce+Dashboard" alt="E-commerce Dashboard" class="project-img">
-                <div class="project-content">
-                    <h3>E-commerce Sales Dashboard</h3>
-                    <div class="project-tags">
-                        <span class="tag">Tableau</span>
-                        <span class="tag">SQL</span>
-                    </div>
-                    <p>Analyzed 100K+ transactions to identify key drivers of revenue and customer behavior.</p>
-                    <p class="metric">📈 +22% improvement in marketing ROI</p>
-                </div>
+
+            <div class="card">
+                <h3>BI Dashboard Development – E-commerce Analytics</h3>
+                <p class="date">Tableau • Aug 2024 – Dec 2024</p>
+                <p>Designed interactive Tableau dashboards using 100K+ e-commerce transaction records.<br>
+                Cleaned and transformed multi-category datasets. Defined KPIs for product engagement and pricing trends.<br>
+                Wrote SQL queries to extract and prepare aggregated datasets for visualization.</p>
             </div>
-            
-            <div class="project-card">
-                <img src="https://via.placeholder.com/600x200/1e3a8a/ffffff?text=SQL+Automation" alt="SQL Automation" class="project-img">
-                <div class="project-content">
-                    <h3>Automated Reporting System</h3>
-                    <div class="project-tags">
-                        <span class="tag">SQL Server</span>
-                        <span class="tag">ETL</span>
-                        <span class="tag">Python</span>
-                    </div>
-                    <p>Built automated daily/weekly reports reducing manual effort significantly.</p>
-                    <p class="metric">⚡ 65% faster reporting cycle</p>
-                </div>
+
+            <div class="card">
+                <h3>Business Reporting Automation System</h3>
+                <p class="date">SQL Server &amp; VB.NET • Jan 2024 – Apr 2024</p>
+                <p>Developed a reporting automation system to track operational and financial performance.<br>
+                Built SQL queries and database views to calculate KPIs such as sales performance and revenue growth.<br>
+                Implemented automated ETL workflows to import CSV/Excel data. Automated report exports, significantly reducing manual effort.</p>
             </div>
-            
-            <div class="project-card">
-                <img src="https://via.placeholder.com/600x200/1e3a8a/ffffff?text=Customer+Analysis" alt="Customer Analysis" class="project-img">
-                <div class="project-content">
-                    <h3>Customer Churn Analysis</h3>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Pandas</span>
-                        <span class="tag">Seaborn</span>
-                    </div>
-                    <p>Identified churn patterns and recommended retention strategies.</p>
-                    <p class="metric">📉 Predicted churn with 87% accuracy</p>
-                </div>
+
+            <div class="card">
+                <h3>Relational Database Design &amp; Analytics – Art Gallery</h3>
+                <p class="date">Aug 2023 – Dec 2023</p>
+                <p>Designed a normalized relational database to manage artist, customer, and transaction data.<br>
+                Developed SQL queries (joins, aggregations, subqueries) and optimized them using indexing.<br>
+                Generated analytical reports highlighting transaction trends and customer activity.</p>
             </div>
-            
+
+            <div class="card">
+                <h3>Python-Based Data Processing &amp; Reporting Automation</h3>
+                <p class="date">Jan 2023 – May 2023</p>
+                <p>Developed Python scripts using Pandas to process datasets with 50K+ records.<br>
+                Built automated workflows for data cleaning, transformation, and metric calculations.<br>
+                Generated analytical reports and visualizations using Matplotlib.</p>
+            </div>
+
         </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" style="background: rgba(15,23,42,0.6);">
-        <h2>Get In Touch</h2>
-        <form action="https://formspree.io/f/yourformid" method="POST"> <!-- Replace with real form service or remove -->
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-        </form>
-        <p style="text-align:center; margin-top: 30px;">
-            Email: <a href="mailto:dileepdurgam39@gmail.com" style="color:var(--primary);">dileepdurgam39@gmail.com</a>
-        </p>
+    <!-- EDUCATION -->
+    <section id="education" style="background: rgba(10,10,46,0.6);">
+        <h2>Education</h2>
+        <div class="glass-card" style="max-width: 700px; margin: 0 auto;">
+            <p><strong>Master of Science, Information Technology</strong><br>
+            Northern Illinois University, Dekalb • Dec 2024</p>
+            <p style="margin-top: 25px;"><strong>Bachelor of Technology, Computer Science</strong><br>
+            Jawaharlal Nehru Technological University, India • July 2022</p>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+        <h2>Licenses &amp; Certifications</h2>
+        <div class="skills-grid" style="max-width: 700px; margin: 0 auto;">
+            <div class="skill-tag" style="padding: 14px 20px; font-size: 1.05rem;">Introduction to Cybersecurity – Cisco</div>
+            <div class="skill-tag" style="padding: 14px 20px; font-size: 1.05rem;">Data Analytics Essentials – Cisco</div>
+            <div class="skill-tag" style="padding: 14px 20px; font-size: 1.05rem;">PCEP – Certified Entry-Level Python Programmer</div>
+        </div>
     </section>
 
     <footer>
-        © 2026 Dileep Durgam • Data Analyst Portfolio<br>
-        Built with ❤️ and clean code
+        © 2026 Dileep Durgam • Data Analyst<br>
+        Dekalb, IL • +1 224-390-6774 • dileepdurgam39@gmail.com
     </footer>
 
 </body>
